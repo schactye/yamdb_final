@@ -1,3 +1,5 @@
+![example workflow](https://github.com/<Abrashina Elena>/<schactye>/actions/workflows/<yamdb_workflow.yml>/badge.svg)
+
 YAMDB_FINAL
 
 example event parameter
