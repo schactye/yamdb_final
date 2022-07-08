@@ -1,4 +1,4 @@
-[![example workflow](https://github.com/github/schactye/actions/workflows/yamdb_workflow.yml/badge.svg)]
+[![example workflow](https://github.com/github/https://github.com/schactye/actions/workflows/yamdb_workflow.yml/badge.svg)]
 
 [![Yandex.Cloud](https://img.shields.io/badge/-Yandex.Cloud-464646?style=flat&logo=Yandex.Cloud&logoColor=56C0C0&color=008080)](https://cloud.yandex.ru/)
 
