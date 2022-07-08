@@ -1,4 +1,4 @@
-[example workflow](https://github.com/githu/schactye/actions/workflows/yamdb_workflow.yml)
+[(https://github.com/githu/schactye/actions/workflows/yamdb_workflow.yml)]
 
 YAMDB_FINAL
 
