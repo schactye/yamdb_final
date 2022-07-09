@@ -61,7 +61,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull schactye/yamdb_final:latest
+            sudo docker pull schactye/api_yamdb:latest
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
