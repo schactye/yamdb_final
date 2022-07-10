@@ -23,6 +23,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
           pip install -r api_yamdb/requirements.txt
+    
     - name: Test with flake8 and pytest
       run: |
         python -m flake8
@@ -47,7 +48,7 @@ jobs:
         with:
           context: ./api_yamdb/
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/api_yamdb:latest
+          tags: schactye/yamdb_final:latest
 
   deploy:
     if: github.ref == 'refs/heads/master'
@@ -62,8 +63,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
+            sudo docker pull schactye/yamdb_final:latest
             sudo docker-compose stop
-            sudo docker-compose rm web
+            sudo docker-compose rm -f web
+            rm .env
             touch .env
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
@@ -72,6 +75,9 @@ jobs:
             echo DB_HOST=${{ secrets.DB_HOST }} >> .env
             echo DB_PORT=${{ secrets.DB_PORT }} >> .env
             sudo docker-compose up -d
+            sudo docker-compose exec -t web python manage.py migrate 
+            sudo docker-compose exec -t web python manage.py collectstatic --noinput
+  
   send_message:
       runs-on: ubuntu-latest
       needs: deploy
