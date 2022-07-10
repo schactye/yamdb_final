@@ -1,6 +1,6 @@
 FROM python:3.7-slim
-RUN workdir /app
-COPY requirements.txt /.
+WORKDIR /app
+COPY requirements.txt .
 RUN pip3 install -r /./requirements.txt --no-cache-dir
-COPY api_yamdb/ /app
+COPY . .
 CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000"]
