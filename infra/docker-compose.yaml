@@ -9,6 +9,7 @@ services:
 
   db:
     image: postgres:13.0-alpine
+    restart: always
     volumes:
       - database:/var/lib/postgresql/data/
     env_file:
@@ -26,6 +27,7 @@ services:
 
   nginx:
     image: nginx:1.21.3-alpine
+    restart: always
     ports:
       - "80:80"
     volumes:
